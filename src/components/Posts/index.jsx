@@ -5,6 +5,7 @@ posts(){
   id,
   title,
   body,
+  numberOfComment,
   user {
     name
     username

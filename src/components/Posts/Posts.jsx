@@ -1,4 +1,4 @@
-export default ({title,body,user:{username,website}}) => {
+export default ({title,body,numberOfComment,user:{username,website}}) => {
     return <div className="mb-2">
         <div className="card py-1">
             <div className="row">
@@ -28,7 +28,7 @@ export default ({title,body,user:{username,website}}) => {
                 <div className="row py-2">
                     <div className="col-6 d-flex justify-content-start">
                         <div className="px-2">
-                            # coments
+                            {numberOfComment} comments
                         </div>
                     </div>
                     <div className="col-6 d-flex justify-content-end">
