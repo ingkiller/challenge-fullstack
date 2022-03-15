@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 
 export default () => {
     const router = useRouter()
-    console.log('router:',router)
    return ( <>
        <section id="topbar" className="d-flex align-items-center">
            <div className="container d-flex justify-content-center justify-content-md-between">
@@ -28,7 +27,7 @@ export default () => {
                        <li><a className="nav-link" href="#hero">Post</a></li>
                        <li><ActiveLink href="/posts" >Posts</ActiveLink></li>
                        <li><ActiveLink href="/albums" >Albums</ActiveLink></li>
-                       <li><a className="nav-link scrollto" href="#about">Albums</a></li>
+                       <li><ActiveLink href="/about" >About</ActiveLink></li>
                        <li><a className="nav-link scrollto" href="#services">Todo</a></li>
                        <li><a className="nav-link scrollto " href="#portfolio">Portfolio</a></li>
                        <li><a className="nav-link scrollto" href="#team">Team</a></li>
