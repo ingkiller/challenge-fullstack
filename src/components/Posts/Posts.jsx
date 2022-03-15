@@ -1,5 +1,29 @@
-export default ({title,body,numberOfComment,user:{username,website}}) => {
-    return <div className="mb-2">
+import { useManualQuery } from "graphql-hooks";
+import {useCallback, useState} from "react";
+
+const GET_COMMENTS_BY_POST_ID = `query getCommentByPostId($postId: Int!){
+    getCommentByPostId(postId: $postId){
+         id,
+         postId,
+         name,
+         email,
+         body,
+    }
+}`
+
+export default ({id,title,body,numberOfComment,user:{username,website}}) => {
+
+    const [postId, setPostId] = useState(0);
+    const [getCommentByPostId] = useManualQuery(GET_COMMENTS_BY_POST_ID)
+
+    const getCommentsByPostIdHandler =async (postId) =>{
+        let comments = await getCommentByPostId({
+            variables: { postId:1}
+        })
+        console.log('getCommentsByPostIdHandler:',comments)
+    }
+
+    return <div className="mb-3">
         <div className="card py-1">
             <div className="row">
                 <div className="col-2 d-flex justify-content-center align-items-start">
@@ -28,7 +52,10 @@ export default ({title,body,numberOfComment,user:{username,website}}) => {
                 <div className="row py-2">
                     <div className="col-6 d-flex justify-content-start">
                         <div className="px-2">
-                            {numberOfComment} comments
+                            <button onClick={e =>getCommentsByPostIdHandler(id)}>
+                                {numberOfComment} comments
+                            </button>
+
                         </div>
                     </div>
                     <div className="col-6 d-flex justify-content-end">

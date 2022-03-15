@@ -1,5 +1,6 @@
 import Post from './Posts'
-import {useQuery} from "graphql-hooks";
+import {useQuery,useManualQuery} from "graphql-hooks";
+import {useState} from "react";
 const POSTS_QUERY = `query posts(){
 posts(){
   id,
@@ -14,11 +15,22 @@ posts(){
 }
 }`
 
+
 export default () => {
+
     const { loading, error, data } = useQuery(POSTS_QUERY)
 
-   console.log('data:',data)
-    return <div style={{maxHeight:400, overflow:'scroll'}}>{
+
+    return <div style={{maxHeight:400, overflow:'scroll'}}>
+        {
+            loading && <div>
+                <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        }
+        {
         data?.posts?.map((p,index) =>(<Post key={index} {...p} />))
-    }</div>
+    }
+    </div>
 }

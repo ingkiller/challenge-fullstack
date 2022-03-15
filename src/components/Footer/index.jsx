@@ -1,7 +1,6 @@
 export default () => (<footer id="footer">
 
     <div className="footer-newsletter">
-        <div id="heading" Name="heading" Role="heading">heading</div>
         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-lg-6">
