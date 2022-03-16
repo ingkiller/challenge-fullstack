@@ -1,10 +1,8 @@
-import FirstPost from "./posts";
-
-
+import Posts from "./posts";
 
 export default function Home() {
   return (<>
-          <FirstPost></FirstPost>
+          <Posts></Posts>
       </>
   )
 }

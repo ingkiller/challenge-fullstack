@@ -1,6 +1,6 @@
 import BaseTemplate from '../../src/components/baseTemplate'
 import Posts from '../../src/components/Posts'
-export default function FirstPost() {
+export default () => {
     return <BaseTemplate>
         <section id="pricing" className="pricing">
             <div className="container">
