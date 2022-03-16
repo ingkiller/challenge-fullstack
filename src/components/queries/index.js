@@ -21,3 +21,11 @@ name,
 email,
 body
 }}`
+
+export const GET_TODOLIST_BY_USER_ID = `query ($userId: Int!){
+getTodoByUserId(userId: $userId){
+id,
+userId,
+title,
+completed
+}}`
