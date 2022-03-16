@@ -1,7 +1,7 @@
 import { useManualQuery } from "graphql-hooks";
 import {useCallback, useState} from "react";
 import styled from 'styled-components'
-import {Avatar} from '../commun'
+import {Avatar,Comment} from '../commun'
 import { GET_COMMENTS_BY_POST_ID } from "../queries";
 
 const CommentContainer = styled.div`
@@ -92,22 +92,9 @@ export default ({id,title,body,numberOfComment,user:{username,website}}) => {
                         </div>
                     }
                     {
-                        displayComments && comments.map(({email,body},key) =>(<div className="col-11 py-2">
-                            <div key={key} className="card">
-                                <div className="card-body">
-                                    <div className="row">
-                                        <div className="col-12 d-flex justify-content-start">
-                                            <div className="card-title fw-bold fst-italic">{email}</div>
-                                        </div>
-                                        <div className="col-12">
-                                            <div className="card-text">
-                                                {body}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>))
+                        displayComments && comments.map(({email,body},key) =>(
+                           <Comment key={key} email={email} body={body} />
+                           ))
                     }
                 </div>
             </CommentContainer>
