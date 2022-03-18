@@ -15,3 +15,7 @@ createTask(title: $title){
     completed
 }
 }`
+
+export const DELETE_TASK = `mutation deleteTask($taskId: Int!){
+deleteTask(taskId: $taskId)
+}`

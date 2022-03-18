@@ -1,7 +1,8 @@
 import {useCallback, useEffect, useState} from "react";
 import { useManualQuery, useMutation } from "graphql-hooks";
+import Task from "./Task";
 import { GET_TODOLIST_BY_USER_ID } from "../queries";
-import {TOGGLE_TASK, CREATE_TASK} from "../mutations"
+import {TOGGLE_TASK, CREATE_TASK, DELETE_TASK} from "../mutations"
 
 export default () => {
     const [tab,setTab] = useState('tab-1');
@@ -11,6 +12,7 @@ export default () => {
     const [fetchTodoList] = useManualQuery(GET_TODOLIST_BY_USER_ID);
     const [toggleTask] = useMutation(TOGGLE_TASK);
     const [createTask] = useMutation(CREATE_TASK);
+    const [deleteTask] = useMutation(DELETE_TASK);
 
 
     useEffect(() => {
@@ -53,6 +55,7 @@ export default () => {
     },[toggleTask])
 
     const onCreateNewTask = useCallback(async (evt) => {
+        evt.preventDefault()
         let result = await createTask({variables:{title:title}});
         if(result.error){
             console.error(result.error)
@@ -65,6 +68,15 @@ export default () => {
             setTitle("")
         }
     },[title,createTask])
+
+    const onDeleteTaskById = useCallback(async (taskId) => {
+        let result = await deleteTask({variables:{taskId:taskId}})
+        if(result.error){
+            console.error(result.error)
+        }else {
+            setTasks(current => [...current].filter(task => task.id !== taskId))
+        }
+    },[deleteTask])
 
 
     return (<div className="container h-100">
@@ -79,7 +91,6 @@ export default () => {
                             </form>
 
                             <ul className="nav nav-tabs mb-4" id="ex1" role="tablist">
-
                                 <li className="nav-item" role="presentation">
                                     <a className={"nav-link " +( tab === 'tab-1' ? "active": "")} id="tab-1"
                                        href="#" onClick={onTabClick} role="tab"
@@ -96,7 +107,6 @@ export default () => {
                                     >Completed</a>
                                 </li>
                             </ul>
-
                             <div className="tab-content" id="ex1-content">
                                 {
                                     tab === "tab-1" && <div className={"tab-pane fade " +(tab === 'tab-1'?"show active":"")} id="tab-1" role="tabpanel"
@@ -104,15 +114,11 @@ export default () => {
                                         <ul className="list-group mb-0">
                                             {
                                                 tasks.map((task,index)=>(
-                                                    <li key={index} className="list-group-item d-flex align-items-center border-0 mb-2 rounded"
-                                                        style={{backgroundColor: '#f4f6f7'}}>
-                                                        <input className="form-check-input me-2" type="checkbox" value=""
-                                                               aria-label="..." checked={task.completed} onChange={(e) =>toggleTaskHandler(task.id)}/>
-                                                        {
-                                                            task.completed === true ?<s>{task.title}</s>:task.title
-                                                        }
-                                                    </li>
-                                                ))
+                                                    <Task key={index}
+                                                          {...task}
+                                                          onToggle={toggleTaskHandler}
+                                                          onDelete={onDeleteTaskById}
+                                                    />))
                                             }
                                         </ul>
                                     </div>
@@ -123,12 +129,11 @@ export default () => {
                                         <ul className="list-group mb-0">
                                             {
                                                 getTaskActive().map((task,index)=>(
-                                                    <li key={index} className="list-group-item d-flex align-items-center border-0 mb-2 rounded"
-                                                        style={{backgroundColor: '#f4f6f7'}}>
-                                                        <input className="form-check-input me-2" type="checkbox" value=""
-                                                               aria-label="..." checked={task.completed} onChange={(e) =>toggleTaskHandler(task.id)}/>
-                                                        {task.title}
-                                                    </li>
+                                                    <Task key={index}
+                                                          {...task}
+                                                          onToggle={toggleTaskHandler}
+                                                          onDelete={onDeleteTaskById}
+                                                    />
                                                 ))
                                             }
                                         </ul>
@@ -140,20 +145,17 @@ export default () => {
                                         <ul className="list-group mb-0">
                                             {
                                                 getTaskCompleted().map((task,index)=>(
-                                                    <li key={index} className="list-group-item d-flex align-items-center border-0 mb-2 rounded"
-                                                        style={{backgroundColor: '#f4f6f7'}}>
-                                                        <input className="form-check-input me-2" type="checkbox" value=""
-                                                               aria-label="..." checked={task.completed} onChange={(e) =>toggleTaskHandler(task.id)}/>
-                                                        <s>{task.title}</s>
-                                                    </li>
+                                                    <Task key={index}
+                                                          {...task}
+                                                          onToggle={toggleTaskHandler}
+                                                          onDelete={onDeleteTaskById}
+                                                    />
                                                 ))
                                             }
                                         </ul>
                                     </div>
                                 }
                             </div>
-
-
                         </div>
                 </div>
             </div>
