@@ -1,13 +1,13 @@
 import BaseTemplate from '../../src/components/baseTemplate'
-import Posts from '../../src/components/Posts'
+import Login from "../../src/components/Login/Login";
 export default () => {
     return <BaseTemplate>
         <section id="pricing" className="pricing">
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-8">
-                        <div className="box" style={{boxShadow:"none"}}>
-                            <Posts/>
+                        <div className="box">
+                            <Login/>
                         </div>
                     </div>
                 </div>

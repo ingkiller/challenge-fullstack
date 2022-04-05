@@ -16,14 +16,17 @@ export default () => {
 
 
     useEffect(() => {
+        console.log('get TODO LIST')
         setLoadingTasks(true)
         const getTodoListByUserId = async (userId) =>{
             let result = await fetchTodoList({
-                variables:{userId:userId}
+                variables:{userId:userId},
+                useCache:false
             })
             if(result.error){
-                console.log('Error:',result.error)
+                console.log('Error:',result)
             }else{
+                console.log('result:',result.refetch)
                 setTasks(result.data.getTodoByUserId)
             }
             setLoadingTasks(false)
@@ -47,7 +50,9 @@ export default () => {
 
     const toggleTaskHandler = useCallback(async (taskId) => {
         let result = await toggleTask({variables:{taskId: taskId}})
-        if(result.error){}else{
+        if(result.error){
+            console.error(result.error)
+        }else{
             setTasks(current =>{
                 return [...current].map(t => t.id === result.data.toggleTask.id?result.data.toggleTask: t)
             })

@@ -7,7 +7,7 @@ import { GET_COMMENTS_BY_POST_ID } from "../queries";
 const CommentContainer = styled.div`
   border-bottom-right-radius:5px;
   border-bottom-left-radius:5px;
-  background-color:rgba(0,0,0,10%);
+  background-color:#f1f6fe;
 `
 
 
@@ -45,7 +45,7 @@ export default ({id,title,body,numberOfComment,user:{username,website}}) => {
 
 
     return <div className="mb-3">
-        <div className="card py-1">
+        <div className="card py-1" style={{boxShadow: '0px 0px 4px rgb(0 0 0 / 12%)'}}>
             <div className="row">
                 <div className="col-2 d-flex justify-content-center align-items-start">
                    <Avatar name={username[0]}/>
@@ -58,7 +58,7 @@ export default ({id,title,body,numberOfComment,user:{username,website}}) => {
                     <div className="row">
                         <div className="col d-flex justify-content-end">
                             <div className="px-2">
-                                <span className="fst-italic"><a style={{color:'black'}} href={website} target="_blank">{website}</a></span>
+                                <span className="fst-italic"><a style={{color:'#637182'}} href={website} target="_blank">{website}</a></span>
                             </div>
                         </div>
                     </div>
@@ -71,14 +71,14 @@ export default ({id,title,body,numberOfComment,user:{username,website}}) => {
                     <div className="col-6 d-flex justify-content-start">
                         <div className="px-2">
                             <button className="btn btn-sm" type="button">
-                                <i className="bi-chat"> {numberOfComment} comments</i>
+                                <i className="bi-chat" style={{color:'#637182'}}>{numberOfComment} comments </i>
                             </button>
                         </div>
                     </div>
                     <div className="col-6 d-flex justify-content-end">
                         <div className="px-2">
-                            <button className="btn btn-sm" type="button" onClick={e => toggleComments(e,id)}>
-                                {displayComments ? "close comments": "view comments"}
+                            <button color="" className="btn btn-sm" type="button" onClick={e => toggleComments(e,id)}>
+                               <span style={{color:'#637182'}}>{displayComments ? "close comments": "view comments"}</span>
                             </button>
                         </div>
                     </div>

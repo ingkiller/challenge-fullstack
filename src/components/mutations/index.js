@@ -19,3 +19,7 @@ createTask(title: $title){
 export const DELETE_TASK = `mutation deleteTask($taskId: Int!){
 deleteTask(taskId: $taskId)
 }`
+
+export const LOGIN = `mutation login($username: String!, $password: String!){
+login(username: $username, password:$password)
+}`

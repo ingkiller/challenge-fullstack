@@ -26,6 +26,7 @@ export default () => {
                        <li><ActiveLink href="/todo" >Todo</ActiveLink></li>
                        <li><ActiveLink href="/about" >About</ActiveLink></li>
                        <li><ActiveLink href="/contact" >Contact</ActiveLink></li>
+                       <li><ActiveLink href="/login" >Login</ActiveLink></li>
                    </ul>
                    <i className="bi bi-list mobile-nav-toggle"/>
                </nav>

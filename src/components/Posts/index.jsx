@@ -1,12 +1,11 @@
 import Post from './Posts'
-import {useQuery,useManualQuery} from "graphql-hooks";
-import {useState} from "react";
+import {useQuery} from "graphql-hooks";
 import { POSTS_QUERY } from "../queries";
 
 
 export default () => {
 
-    const { loading, error, data } = useQuery(POSTS_QUERY)
+    const { loading, data } = useQuery(POSTS_QUERY)
 
     return <div className="px-2" style={{maxHeight:400, overflow:'scroll'}}>
         {

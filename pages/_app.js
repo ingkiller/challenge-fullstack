@@ -12,12 +12,10 @@ import { GraphQLClient, ClientContext } from 'graphql-hooks'
 import { useGraphQLClient } from '../lib/graphql-client'
 import {DefaultSeo} from 'next-seo';
 import DEFAULT_SEO from './seoConfig'
-
+import {UserContextProvider} from "../context/UserContext";
 
 
 function MyApp({ Component, pageProps }) {
-
-
   const graphQLClient = useGraphQLClient(pageProps.initialGraphQLState)
 
     useEffect(() => {
@@ -26,7 +24,10 @@ function MyApp({ Component, pageProps }) {
   return (
       <ClientContext.Provider value={graphQLClient}>
           <DefaultSeo {...DEFAULT_SEO} />
-        <Component {...pageProps} />
+          <UserContextProvider>
+              <Component {...pageProps} />
+          </UserContextProvider>
+
       </ClientContext.Provider>
   )
 }
