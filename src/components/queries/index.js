@@ -39,8 +39,6 @@ title,
 
 export const GET_PHOTOS_BY_ALBUM_ID = `query ($albumId: Int!){
 getPhotosByAlbumId(albumId: $albumId){
-id,
-    Url,
-    thumbnailUrl
+id,title,Url,thumbnailUrl
 }}`
 

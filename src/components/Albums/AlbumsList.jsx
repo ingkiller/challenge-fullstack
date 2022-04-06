@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import {useManualQuery} from "graphql-hooks";
+import Link from 'next/link'
 import {useUserContext} from "../../../context/UserContext";
 import {GET_ALBUMS_BY_USER_ID} from '../queries'
 
@@ -40,14 +41,25 @@ const AlbumsList = (props) => {
         }
         <ul className="list-group list-group-flush">
         {
-            data.map(({title,numberOfPhotos},index) =>(<li className="list-group-item d-flex justify-content-between pb-2" key={index} >
+            data.map(({id,title,numberOfPhotos},index) =>(<li className="list-group-item pb-2"
+                                                           key={index}
 
-                <div>
-                    <i className="bi-images"></i>
-                    <span className="card-text">{ title}</span>
-                </div>
-                <span className="badge bg-primary rounded-pill d-flex align-items-center">{numberOfPhotos}</span>
-            </li>))
+
+            >
+                <Link href={`albums/${id}`} >
+                    <a className="w-100">
+                        <div className="d-flex justify-content-between">
+                            <div>
+                                <i className="bi-images"></i>
+                                <span className="card-text">{ title}</span>
+                            </div>
+                            <span className="badge bg-primary rounded-pill d-flex align-items-center">{numberOfPhotos}</span>
+
+                        </div>
+                            </a>
+
+                </Link>
+                </li>))
         }
         </ul>
     </div>)
