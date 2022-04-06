@@ -30,3 +30,17 @@ title,
 completed
 }}`
 
+export const GET_ALBUMS_BY_USER_ID = `query ($userId: Int!){
+getAlbumsByUserId(userId: $userId){
+id,
+title,
+    numberOfPhotos
+}}`
+
+export const GET_PHOTOS_BY_ALBUM_ID = `query ($albumId: Int!){
+getPhotosByAlbumId(albumId: $albumId){
+id,
+    Url,
+    thumbnailUrl
+}}`
+

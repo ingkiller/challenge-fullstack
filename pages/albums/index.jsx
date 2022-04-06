@@ -1,2 +1,15 @@
 import BaseTemplate from '../../src/components/baseTemplate'
-export default () => (<BaseTemplate><h1>Albums</h1></BaseTemplate>)
+import AlbumsList from "../../src/components/Albums/AlbumsList";
+export default () => (<BaseTemplate>
+    <section id="pricing" className="pricing">
+        <div className="container">
+            <div className="row justify-content-center">
+                <div className="col-md-8">
+                    <div className="box"  style={{boxShadow:"none"}}>
+                        <AlbumsList/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</BaseTemplate>)
