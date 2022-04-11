@@ -12,6 +12,20 @@ posts(){
 }
 }`
 
+export const POSTS_QUERY_BY_RANGE = `query posts($start: Int! , $long: Int!){
+getPostByRange(start: $start , long: $long){
+  id,
+  title,
+  body,
+  numberOfComment,
+  createdDate
+  user {
+    name
+    username
+    website
+  }
+}
+}`
 
 export const GET_COMMENTS_BY_POST_ID = `query ($postId: Int!){
 getCommentByPostId(postId: $postId){

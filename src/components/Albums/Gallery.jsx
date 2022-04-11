@@ -22,7 +22,7 @@ const Gallery = props =>{
         }
         getPhotosByAlbumId()
     },[id])
-    
+
     return <Carousel showIndicators={false} >{
         data.map(({Url,title},index)=>(<div key={index}>
             <img src={Url} />

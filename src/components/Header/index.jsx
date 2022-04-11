@@ -6,7 +6,7 @@ export default () => {
            <div className="container d-flex justify-content-center justify-content-md-between">
                <div className="contact-info d-flex align-items-center">
                    <i className="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">contact@example.com</a></i>
-                   <i className="bi bi-phone d-flex align-items-center ms-4"><span>+1 2345 678901 23</span></i>
+                   <i className="bi bi-phone d-flex align-items-center ms-4"><span>+1 2345 6789 23</span></i>
                </div>
                <div className="social-links d-none d-md-flex align-items-center">
                    <a href="#" className="twitter"><i className="bi bi-twitter"/></a>

@@ -25,7 +25,7 @@ export default () => (<footer id="footer">
                         111 Abc Street <br/>
                         Dfghjk, PP 123456<br/>
                         Xcvbn Dfgh <br/>
-                        <strong>Phone:</strong> +0 1234 56789 4<br/>
+                        <strong>Phone:</strong> +1 2345 6789 23<br/>
                         <strong>Email:</strong> contact@example.com <br/>
                     </p>
                 </div>

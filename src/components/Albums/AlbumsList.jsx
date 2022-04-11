@@ -49,7 +49,7 @@ const AlbumsList = (props) => {
                 <Link href={`albums/${id}`} >
                     <a className="w-100">
                         <div className="d-flex justify-content-between">
-                            <div>
+                            <div className="text-dark">
                                 <i className="bi-images"></i>
                                 <span className="card-text">{ title}</span>
                             </div>

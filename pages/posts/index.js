@@ -5,7 +5,7 @@ export default () => {
         <section id="pricing" className="pricing">
             <div className="container">
                 <div className="row justify-content-center">
-                    <div className="col-md-8">
+                    <div className="col-md-6">
                         <div className="box" style={{boxShadow:"none"}}>
                             <Posts/>
                         </div>
