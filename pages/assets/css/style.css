@@ -1559,3 +1559,8 @@ section {
     padding: 2px 0;
   }
 }
+
+.maxHeightScroll{
+  max-height:calc(100vh - 160px);
+  overflow:scroll;
+}

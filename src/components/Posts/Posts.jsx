@@ -25,7 +25,6 @@ const InputComment = styled.input`
 
 export default ({id,title,body,numberOfComment,user:{username,email},createdDate,numberOfLikes=10}) => {
 
-    console.log('postId:',id)
     const [getCommentByPostId] = useManualQuery(GET_COMMENTS_BY_POST_ID)
     const [comments, setComments] = useState([])
     const [isLoadingComments, setIsLoadingComments] = useState(false)

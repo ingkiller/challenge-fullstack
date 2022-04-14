@@ -1,4 +1,4 @@
-
+import servicesJson from "../commun/services.json"
 export default ({displayNewsletter = true}) => (<footer id="footer">
     {
         displayNewsletter &&  <div className="footer-newsletter">
@@ -47,10 +47,10 @@ export default ({displayNewsletter = true}) => (<footer id="footer">
                 <div className="col-lg-3 col-md-6 footer-links">
                     <h4>Our Services</h4>
                     <ul>
-                        <li><i className="bx bx-chevron-right"></i> <a href="#">Services 1</a></li>
-                        <li><i className="bx bx-chevron-right"></i> <a href="#">Services 2</a></li>
-                        <li><i className="bx bx-chevron-right"></i> <a href="#">Services 3</a></li>
-                       </ul>
+                        {
+                            servicesJson.map(({title,link},index) => (<li key={index}><i className="bx bx-chevron-right"></i> <a href={link}>{title}</a></li>))
+                        }
+                    </ul>
                 </div>
 
                 <div className="col-lg-3 col-md-6 footer-links">

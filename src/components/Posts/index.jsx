@@ -5,6 +5,7 @@ import { POSTS_QUERY_BY_RANGE,GET_POST_BY_USER_ID } from "../queries";
 import {useCallback, useEffect, useRef, useState} from "react";
 import {useDebouncedCallback} from "use-debounce";
 import UserList from "./UserList";
+import ServicesList from "../Services/ServicesList";
 const STEP = 3;
 
 export default () => {
@@ -66,10 +67,12 @@ export default () => {
     return ( <section id="pricing" className="pricing">
         <div className="container">
             <div className="row justify-content-end">
-               
+                <div className="col-md-3">
+                    <ServicesList/>
+                </div>
                 <div className="col-md-6">
                     <div className="box" style={{boxShadow:"none"}}>
-                        <div id="scrollablePost" className="px-2" style={{maxHeight:500, overflow:'scroll'}}>
+                        <div id="scrollablePost" className="px-2 maxHeightScroll">
                             <InfiniteScroll
                                 dataLength={data.length}
                                 next={postsByUserId}
@@ -82,7 +85,9 @@ export default () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-md-3"> <UserList onClickUser={onClickUser}/></div>
+                <div className="col-md-3">
+                    <UserList onClickUser={onClickUser}/>
+                </div>
             </div>
         </div>
     </section>)
