@@ -36,11 +36,15 @@ const AlbumsList = (props) => {
                 <div className="col-md-6">
                     <div className="box maxHeightScroll px-2"  style={{boxShadow:"none"}}>
                             {
-                                loadingAlbums && <div>
-                                    <div className="spinner-border text-primary" role="status">
-                                        <span className="visually-hidden">Loading...</span>
+                                loadingAlbums &&<div className="row justify-content-center">
+                                    <div className="col-1"><div className="spinner-border text-primary" role="status">
+                                        <span className="visually-hidden">Loading...</span></div>
                                     </div>
+                                        <div className="col-7 text-start">
+                                            <h4>Loading Albums...</h4>
+                                        </div>
                                 </div>
+
                             }
                             {
                                 error && <div>Error loading Albums</div>

@@ -1,6 +1,9 @@
 import ActiveLink from "../ActiveLink";
+import {useUserContext} from "../../../context/UserContext";
 
 export default () => {
+    const {token,onLogOut} = useUserContext()
+
    return ( <>
        <section id="topbar" className="d-flex align-items-center">
            <div className="container d-flex justify-content-center justify-content-md-between">
@@ -25,8 +28,11 @@ export default () => {
                        <li><ActiveLink href="/albums" >Albums</ActiveLink></li>
                        <li><ActiveLink href="/todo" >Todo</ActiveLink></li>
                        <li><ActiveLink href="/about" >About</ActiveLink></li>
-                       <li><ActiveLink href="/contact" >Contact</ActiveLink></li>
-                       <li><ActiveLink href="/login" >Login</ActiveLink></li>
+                       <li><ActiveLink href="/contact" >Contact</ActiveLink></li>{
+                       token === ""?<li><ActiveLink href="/login" >Login</ActiveLink></li>:
+                           <li><button className="btn btn-sm m-0 p-0" onClick={onLogOut}><ActiveLink href="#" >Logout</ActiveLink></button></li>
+                   }
+
                    </ul>
                    <i className="bi bi-list mobile-nav-toggle"/>
                </nav>

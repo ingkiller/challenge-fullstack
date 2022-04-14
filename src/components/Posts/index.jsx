@@ -1,9 +1,8 @@
 import InfiniteScroll from "react-infinite-scroll-component";
 import Post from './Posts'
 import {useManualQuery} from "graphql-hooks";
-import { POSTS_QUERY_BY_RANGE,GET_POST_BY_USER_ID } from "../queries";
+import { GET_POST_BY_USER_ID } from "../queries";
 import {useCallback, useEffect, useRef, useState} from "react";
-import {useDebouncedCallback} from "use-debounce";
 import UserList from "./UserList";
 import ServicesList from "../Services/ServicesList";
 const STEP = 3;
@@ -13,26 +12,7 @@ export default () => {
     const start = useRef(0)
     const [data,setData] = useState([])
     const [userId , setUserId] = useState(0)
-    const [fetchPosts] = useManualQuery(POSTS_QUERY_BY_RANGE)
     const [fetchPostsByUserId] = useManualQuery(GET_POST_BY_USER_ID)
-
-    const getPost = useCallback(async () => {
-            let result = await fetchPosts({
-                variables:{start:start.current,long:(STEP + start.current)},
-                useCache:false});
-
-            if(result.error){
-                console.error('POSTS_QUERY_BY_RANGE ERROR:'+result.error)
-            }else{
-                setData(current => {
-                    let temp = [...current]
-                    temp = temp.concat(result.data.getPostByRange)
-                    return temp
-                })
-                start.current += STEP
-            }
-        }
-    ,[start,userId])
 
     const postsByUserId = useCallback(async () => {
         let result = await fetchPostsByUserId({

@@ -1,14 +1,17 @@
-import { useManualQuery, useMutation } from "graphql-hooks";
-import {LOGIN} from "../mutations";
-import {useCallback, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
+import { useRouter } from 'next/router'
 import {useUserContext} from "../../../context/UserContext";
 
 export default () => {
-
+    const router = useRouter()
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(true);
     const {token,onLoginHandler} = useUserContext();
+
+    useEffect(() => {
+        token !== "" && router.push('/posts')
+    },[token])
 
     const onChangeUsername = useCallback(evt => {
         setUsername(evt.target.value);
@@ -18,12 +21,16 @@ export default () => {
         setPassword(evt.target.value)
     },[])
 
+    const onChangeRememberMe = useCallback(evt => {
+        setRememberMe(evt.target.checked)
+    },[])
+
     const loginHandler = useCallback(async () => {
         onLoginHandler(username,password,rememberMe)
     },[username,password,rememberMe])
 
 
-    return <div className="container h-100">
+    return token === "" &&(<div className="container h-100">
             <div className="row d-flex align-items-center justify-content-center h-100">
                 <div className="col-md-8 col-lg-7 col-xl-6">
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
@@ -43,7 +50,7 @@ export default () => {
 
                             <div className="form-check">
                                 <input className="form-check-input" type="checkbox" value="" id="form1Example3"
-                                       checked/>
+                                       checked={rememberMe} onChange={onChangeRememberMe}/>
                                 <label className="form-check-label" htmlFor="form1Example3"><small>Remember me</small> </label>
                             </div>
                             <a href="#"><small>Forgot password?</small></a>
@@ -78,6 +85,6 @@ export default () => {
                     </form>
                 </div>
             </div>
-        </div>
+        </div>)
 
 }
