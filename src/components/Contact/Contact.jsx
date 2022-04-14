@@ -13,7 +13,7 @@ export default () => {
                     <div className="info-box mb-4">
                         <i className="bx bx-map"></i>
                         <h3>Our Address</h3>
-                        <p>A108 Adam Street, New York, NY 535022</p>
+                        <p>111 Abc Street, Dfghjk, PP 123456</p>
                     </div>
                 </div>
 
@@ -29,7 +29,7 @@ export default () => {
                     <div className="info-box  mb-4">
                         <i className="bx bx-phone-call"></i>
                         <h3>Call Us</h3>
-                        <p>+1 5589 55488 55</p>
+                        <p>+1 2345 6789 23</p>
                     </div>
                 </div>
 
@@ -39,7 +39,7 @@ export default () => {
 
                 <div className="col-lg-6 ">
                     <iframe className="mb-4 mb-lg-0"
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3727.575966256034!2d-76.26409719366643!3d20.889134898770603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sus!4v1649949954591!5m2!1ses!2sus"
                             frameBorder="0" style={{border:0, width: '100%', height: '384px'}} allowFullScreen></iframe>
                 </div>
 
