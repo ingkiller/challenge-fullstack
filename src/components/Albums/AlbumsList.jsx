@@ -3,7 +3,7 @@ import {useManualQuery} from "graphql-hooks";
 import Link from 'next/link'
 import {useUserContext} from "../../../context/UserContext";
 import {GET_ALBUMS_BY_USER_ID} from '../queries'
-
+import ServicesList from "../Services/ServicesList";
 
 const AlbumsList = (props) => {
     const {token} = useUserContext();
@@ -20,7 +20,6 @@ const AlbumsList = (props) => {
                 console.error(result.error)
                 setError(result.error)
             }else{
-                console.log('albums:',result.data.getAlbumsByUserId)
                 setData(result.data.getAlbumsByUserId);
                 setLoadingAlbums(false)
             }
@@ -28,41 +27,60 @@ const AlbumsList = (props) => {
         getAlbums()
     },[])
 
-    return (<div className="px-2" style={{maxHeight:400, overflow:'scroll'}}>
-        {
-            loadingAlbums && <div>
-                <div className="spinner-border text-primary" role="status">
-                    <span className="visually-hidden">Loading...</span>
+    return (<section id="pricing" className="pricing">
+        <div className="container">
+            <div className="row justify-content-start">
+                <div className="col-md-3">
+                    <ServicesList/>
+                </div>
+                <div className="col-md-6">
+                    <div className="box maxHeightScroll px-2"  style={{boxShadow:"none"}}>
+                            {
+                                loadingAlbums && <div>
+                                    <div className="spinner-border text-primary" role="status">
+                                        <span className="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                            }
+                            {
+                                error && <div>Error loading Albums</div>
+                            }
+                            {
+                                !loadingAlbums && !error && <>
+                                    <div className="container">
+                                        <div className="section-title">
+                                            <h3>Albums List</h3>
+                                        </div>
+                                    </div>
+
+                                    <ul className="list-group list-group-flush">
+                                        {
+                                            data.map(({id,title,numberOfPhotos},index) =>(<li className="list-group-item pb-2" key={index}>
+                                                <Link href={`albums/${id}`} >
+                                                    <a className="w-100">
+                                                        <div className="d-flex justify-content-between">
+                                                            <div className="text-dark">
+                                                                <i className="bi-images"></i>
+                                                                <span className="card-text ms-1">{ title}</span>
+                                                            </div>
+                                                            <span className="badge bg-primary rounded-pill d-flex align-items-center">{numberOfPhotos}</span>
+                                                        </div>
+                                                    </a>
+                                                </Link>
+                                            </li>))
+                                        }
+                                    </ul>
+                                </>
+                            }
+
+                    </div>
+
                 </div>
             </div>
-        }
-        {
-            error && <div>Error loading Albums</div>
-        }
-        <ul className="list-group list-group-flush">
-        {
-            data.map(({id,title,numberOfPhotos},index) =>(<li className="list-group-item pb-2"
-                                                           key={index}
+        </div>
+    </section>
 
-
-            >
-                <Link href={`albums/${id}`} >
-                    <a className="w-100">
-                        <div className="d-flex justify-content-between">
-                            <div className="text-dark">
-                                <i className="bi-images"></i>
-                                <span className="card-text">{ title}</span>
-                            </div>
-                            <span className="badge bg-primary rounded-pill d-flex align-items-center">{numberOfPhotos}</span>
-
-                        </div>
-                            </a>
-
-                </Link>
-                </li>))
-        }
-        </ul>
-    </div>)
+       )
 }
 
 export default AlbumsList
