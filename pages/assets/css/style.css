@@ -1559,5 +1559,10 @@ section {
 
 .maxHeightScroll{
   max-height:calc(100vh - 160px);
-  overflow:scroll;
+  overflow:scroll !important;
+}
+
+.maxHeightScrollTodo{
+  max-height:calc(100vh - 360px);
+  overflow:scroll !important;
 }

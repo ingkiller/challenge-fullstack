@@ -52,7 +52,6 @@ const AlbumsList = (props) => {
                                             <h3>Albums List</h3>
                                         </div>
                                     </div>
-
                                     <ul className="list-group list-group-flush">
                                         {
                                             data.map(({id,title,numberOfPhotos},index) =>(<li className="list-group-item pb-2" key={index}>
