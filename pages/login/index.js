@@ -1,7 +1,7 @@
 import BaseTemplate from '../../src/components/baseTemplate'
 import Login from "../../src/components/Login/Login";
 export default () => {
-    return <BaseTemplate>
+    return <BaseTemplate displayNewsletter={false}>
         <section id="pricing" className="pricing">
             <div className="container">
                 <div className="row justify-content-center">

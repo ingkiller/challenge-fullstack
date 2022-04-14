@@ -5,7 +5,7 @@ export default () => (<BaseTemplate>
         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-md-8">
-                    <div className="box"  style={{boxShadow:"none"}}>
+                    <div className="box">
                         <AlbumsList/>
                     </div>
                 </div>

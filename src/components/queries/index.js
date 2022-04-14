@@ -12,6 +12,31 @@ posts(){
 }
 }`
 
+export const USERS_QUERY = `query (){
+users(){
+id,name,username,email
+}
+}`
+/*
+,address,phone,website,company
+ */
+
+export const GET_POST_BY_USER_ID = `query getPostsByUserId($userId:Int!, $start:Int!, $long:Int!){
+getPostsByUserId(userId: $userId,start: $start,long: $long){
+id,title,
+  body,
+  numberOfComment,
+  createdDate,
+  user {
+    name,
+    username,
+    website,
+    email
+  }
+}
+}`
+
+
 export const POSTS_QUERY_BY_RANGE = `query posts($start: Int! , $long: Int!){
 getPostByRange(start: $start , long: $long){
   id,

@@ -1,20 +1,24 @@
-export default () => (<footer id="footer">
 
-    <div className="footer-newsletter">
-        <div className="container">
-            <div className="row justify-content-center">
-                <div className="col-lg-6">
-                    <h4>Join Our Newsletter</h4>
-                    <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-                    <form action="" method="post">
-                        <input type="email" name="email" />
+export default ({displayNewsletter = true}) => (<footer id="footer">
+    {
+        displayNewsletter &&  <div className="footer-newsletter">
+            <div className="container">
+                <div className="row justify-content-center">
+                    <div className="col-lg-6">
+                        <h4>Join Our Newsletter</h4>
+                        <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                        <form action="" method="post">
+                            <input type="email" name="email" />
                             <input type="submit" value="Subscribe" />
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    }
+    {
+        !displayNewsletter && <hr className="dropdown-divider"/>
+    }
     <div className="footer-top">
         <div className="container">
             <div className="row">
@@ -63,6 +67,4 @@ export default () => (<footer id="footer">
             </div>
         </div>
     </div>
-
-
 </footer>)

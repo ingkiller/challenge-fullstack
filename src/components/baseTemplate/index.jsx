@@ -1,8 +1,8 @@
 import Header from '../Header'
 import Footer from '../Footer'
 
-export default ({children}) => (<>
+export default ({children,displayNewsletter = true}) => (<>
     <Header/>
         {children}
-    <Footer/>
+    <Footer displayNewsletter ={displayNewsletter}/>
 </>)

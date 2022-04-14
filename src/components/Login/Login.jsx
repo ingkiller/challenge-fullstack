@@ -10,8 +10,6 @@ export default () => {
     const [rememberMe, setRememberMe] = useState(true);
     const {token,onLoginHandler} = useUserContext();
 
-    console.log('userContext:',token)
-
     const onChangeUsername = useCallback(evt => {
         setUsername(evt.target.value);
     },[])
@@ -56,25 +54,23 @@ export default () => {
                         </div>
 
 
-                        <div className="divider d-flex align-items-center justify-content-center my-4">
+                        <div className="divider d-flex align-items-center justify-content-center my-2">
                             <p className="text-center mx-3 mb-0 text-muted">-or-</p>
                         </div>
 
                         <div className="d-flex flex-row align-items-center justify-content-center ">
-
-
-                            <button type="button" className="btn mx-1 btn-link btn-floating">
+                            <button type="button" className="btn btn-link btn-floating">
                                 <i className="bi-google" role="img" aria-label="Google" style={{color:'var(--bs-primary)'}}></i>
                             </button>
-                            <button type="button" className="btn btn-link btn-floating mx-1">
+                            <button type="button" className="btn btn-link btn-floating">
                                 <i className="bi-github" role="img" aria-label="GitHub" style={{color:'var(--bs-primary)'}}></i>
                             </button>
 
-                            <button type="button" className="btn btn-link btn-floating mx-1">
+                            <button type="button" className="btn btn-link btn-floating">
                                 <i className="bi-facebook" role="img" aria-label="Facebook" style={{color:'var(--bs-primary)'}}></i>
                             </button>
 
-                            <button type="button" className="btn btn-link btn-floating mx-1">
+                            <button type="button" className="btn btn-link btn-floating">
                                 <i className="bi-twitter" role="img" aria-label="Twitter" style={{color:'var(--bs-primary)'}}></i>
                             </button>
                         </div>

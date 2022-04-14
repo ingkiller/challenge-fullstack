@@ -1,6 +1,7 @@
 import { useManualQuery } from "graphql-hooks";
 import {useCallback, useState} from "react";
 import styled from 'styled-components'
+import moment from "moment";
 import {Avatar,Comment} from '../commun'
 import { GET_COMMENTS_BY_POST_ID } from "../queries";
 
@@ -22,8 +23,9 @@ const InputComment = styled.input`
 `
 
 
-export default ({id,title,body,numberOfComment,user:{username,website},createdDate,numberOfLikes=10}) => {
+export default ({id,title,body,numberOfComment,user:{username,email},createdDate,numberOfLikes=10}) => {
 
+    console.log('postId:',id)
     const [getCommentByPostId] = useManualQuery(GET_COMMENTS_BY_POST_ID)
     const [comments, setComments] = useState([])
     const [isLoadingComments, setIsLoadingComments] = useState(false)
@@ -35,8 +37,10 @@ export default ({id,title,body,numberOfComment,user:{username,website},createdDa
     const getCommentsByPostIdHandler =async (postId) =>{
         setIsLoadingComments(true)
         let result = await getCommentByPostId({
-            variables: { postId:postId}
+            variables: { postId:postId},
+            useCache:false
         })
+        console.log('getCommentsByPostIdHandler:',result)
         if(result.data && result.data.getCommentByPostId){
             setComments(result.data.getCommentByPostId)
         }
@@ -82,8 +86,8 @@ export default ({id,title,body,numberOfComment,user:{username,website},createdDa
                    <Avatar name={username[0]}/>
                 </div>
                 <div className="flex-column">
-                    <div className="col-12 d-flex justify-content-start"><span className="card-title mb-0">{username}@{website} </span></div>
-                    <div className="col-12 d-flex justify-content-start"><span className="fw-bold fst-italic">{createdDate}</span></div>
+                    <div className="col-12 d-flex justify-content-start"><span className="card-title mb-0">{email} </span></div>
+                    <div className="col-12 d-flex justify-content-start"><span className="text-muted">{moment(createdDate).fromNow()}</span></div>
                 </div>
                 <div className="ms-auto me-1">
                     <div className="btn-group">

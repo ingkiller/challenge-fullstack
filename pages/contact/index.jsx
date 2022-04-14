@@ -1,7 +1,7 @@
 import BaseTemplate from '../../src/components/baseTemplate'
-import Posts from '../../src/components/Posts'
+import Contact from "../../src/components/Contact/Contact";
 export default () => {
     return <BaseTemplate>
-       <Posts/>
+        <Contact/>
     </BaseTemplate>
 }
