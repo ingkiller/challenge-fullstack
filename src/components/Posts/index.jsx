@@ -22,7 +22,7 @@ export default () => {
                 useCache:false});
 
             if(result.error){
-                console.log('POSTS_QUERY_BY_RANGE ERROR:',result.error)
+                console.error('POSTS_QUERY_BY_RANGE ERROR:'+result.error)
             }else{
                 setData(current => {
                     let temp = [...current]
@@ -40,7 +40,7 @@ export default () => {
             useCache:false});
 
         if(result.error){
-            console.log('POSTS_QUERY_BY_RANGE ERROR:',result.error)
+            console.error('POSTS_QUERY_BY_RANGE ERROR:'+result.error)
         }else{
             setData(current => {
                 let temp = [...current]

@@ -39,7 +39,6 @@ export default ({id,title,body,numberOfComment,user:{username,email},createdDate
             variables: { postId:postId},
             useCache:false
         })
-        console.log('getCommentsByPostIdHandler:',result)
         if(result.data && result.data.getCommentByPostId){
             setComments(result.data.getCommentByPostId)
         }

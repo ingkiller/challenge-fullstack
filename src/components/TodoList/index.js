@@ -17,7 +17,6 @@ export default () => {
 
 
     useEffect(() => {
-        console.log('get TODO LIST')
         setLoadingTasks(true)
         const getTodoListByUserId = async (userId) =>{
             let result = await fetchTodoList({
@@ -27,7 +26,6 @@ export default () => {
             if(result.error){
                 console.log('Error:',result)
             }else{
-                console.log('result:',result.refetch)
                 setTasks(result.data.getTodoByUserId)
             }
             setLoadingTasks(false)
@@ -175,6 +173,5 @@ export default () => {
             </div>
         </div>
     </section>
-
     )
 }
