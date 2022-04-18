@@ -1,6 +1,7 @@
-import {createContext, useCallback, useContext, useMemo, useState} from "react";
-import { useMutation, ClientContext } from "graphql-hooks";
+import {createContext, useCallback, useContext, useEffect, useMemo, useState} from "react";
+import {useMutation, ClientContext, useManualQuery} from "graphql-hooks";
 import {LOGIN} from "../src/components/mutations";
+import {GET_USERDATA_BY_TOKEN} from '../src/components/queries'
 
 const UserContext = createContext(null);
 
@@ -11,6 +12,16 @@ const UserContextProvider = (props) => {
     })
     const [userData, setUserData] = useState(null)
     const [onLogin] = useMutation(LOGIN);
+    const [fetchUserDataByToken] = useManualQuery(GET_USERDATA_BY_TOKEN)
+
+    useEffect(() => {
+        const temp = typeof window !== "undefined" ? localStorage.getItem('token'): "";
+        if(temp){
+            const getData = async () => {
+                //todo call Api
+            }
+        }
+    },[])
 
     const onLoginHandler = useCallback(async (user,pass,rememberMe) =>{
         const result = await onLogin({variables:{username:user, password:pass}})
