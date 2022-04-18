@@ -1,36 +1,36 @@
 [{
   "title": "Lorem Ipsum",
-  "icon": "bx bxl-dribbble",
+  "icon": "bi bi-dribbble",
   "link": "#",
   "description": "Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi"
 },
   {
     "title": "Sed ut perspiciatis",
-    "icon": "bx bx-file",
+    "icon": "bi bi-file",
     "link": "#",
     "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore"
   },
   {
     "title": "Magni Dolores",
-    "icon": "bx bx-tachometer",
+    "icon": "bi bi-diagram-2",
     "link": "#",
     "description": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia"
   },
   {
     "title": "Nemo Enim",
-    "icon": "bx bx-world",
+    "icon": "bi bi-building",
     "link": "#",
     "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis"
   },
   {
     "title": "Dele cardo",
-    "icon": "bx bx-slideshow",
+    "icon": "bi bi-file-earmark-slides",
     "link": "#",
     "description": "Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur"
   },
   {
     "title": "Divera don",
-    "icon": "bx bx-arch",
+    "icon": "bi bi-boxes",
     "link": "#",
     "description": "Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur"
   }]

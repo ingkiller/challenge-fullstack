@@ -37,10 +37,10 @@ const Footer = ({displayNewsletter = true}) => (<footer id="footer">
                 <div className="col-lg-3 col-md-6 footer-links">
                     <h4>Useful Links</h4>
                     <ul>
-                        <li><i className="bx bx-chevron-right"></i> <a href="#">Posts</a></li>
-                        <li><i className="bx bx-chevron-right"></i> <a href="#">Albums</a></li>
-                        <li><i className="bx bx-chevron-right"></i> <a href="#">Todo</a></li>
-                        <li><i className="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                        <li><i className="bi bi-chevron-right"></i> <a href="#">Posts</a></li>
+                        <li><i className="bi bi-chevron-right"></i> <a href="#">Albums</a></li>
+                        <li><i className="bi bi-chevron-right"></i> <a href="#">Todo</a></li>
+                        <li><i className="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
                     </ul>
                 </div>
 
@@ -48,7 +48,7 @@ const Footer = ({displayNewsletter = true}) => (<footer id="footer">
                     <h4>Our Services</h4>
                     <ul>
                         {
-                            servicesJson.map(({title,link},index) => (<li key={index}><i className="bx bx-chevron-right"></i> <a href={link}>{title}</a></li>))
+                            servicesJson.map(({title,link},index) => (<li key={index}><i className="bi bi-chevron-right"></i> <a href={link}>{title}</a></li>))
                         }
                     </ul>
                 </div>
@@ -56,11 +56,11 @@ const Footer = ({displayNewsletter = true}) => (<footer id="footer">
                 <div className="col-lg-3 col-md-6 footer-links">
                     <h4>Social Networks</h4>
                     <div className="social-links mt-3">
-                        <a href="#" className="twitter"><i className="bx bxl-twitter"></i></a>
-                        <a href="#" className="facebook"><i className="bx bxl-facebook"></i></a>
-                        <a href="#" className="instagram"><i className="bx bxl-instagram"></i></a>
-                        <a href="#" className="google-plus"><i className="bx bxl-skype"></i></a>
-                        <a href="#" className="linkedin"><i className="bx bxl-linkedin"></i></a>
+                        <a href="#" className="twitter"><i className="bi bi-twitter"></i></a>
+                        <a href="#" className="facebook"><i className="bi bi-facebook"></i></a>
+                        <a href="#" className="instagram"><i className="bi bi-instagram"></i></a>
+                        <a href="#" className="google-plus"><i className="bi bi-skype"></i></a>
+                        <a href="#" className="linkedin"><i className="bi bi-linkedin"></i></a>
                     </div>
                 </div>
 

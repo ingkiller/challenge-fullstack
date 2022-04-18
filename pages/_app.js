@@ -1,11 +1,7 @@
 
 import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-icons/font/bootstrap-icons.css'
 import '../styles/globals.css'
-import "./assets/vendor/aos/aos.css"
-import "./assets/vendor/boxicons/css/boxicons.min.css"
-import "./assets/vendor/glightbox/css/glightbox.min.css"
-import "./assets/vendor/swiper/swiper-bundle.min.css"
-import "./assets/vendor/bootstrap-icons/bootstrap-icons.css"
 import "./assets/css/style.css"
 import {useEffect} from 'react'
 import {  ClientContext } from 'graphql-hooks'

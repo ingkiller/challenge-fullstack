@@ -1,7 +1,6 @@
 import {useCallback, useEffect, useState} from "react";
 import { useRouter } from 'next/router'
 import {useUserContext} from "../../../context/UserContext";
-import Image from 'next/image'
 
 const Login = () => {
     const router = useRouter()
@@ -34,8 +33,8 @@ const Login = () => {
     return token === "" &&(<div className="container h-100">
             <div className="row d-flex align-items-center justify-content-center h-100">
                 <div className="col-md-8 col-lg-7 col-xl-6">
-                    <Image src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-                         className="img-fluid" alt=""/>
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                         className="img-fluid" alt="" />
                 </div>
                 <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
                     <form>

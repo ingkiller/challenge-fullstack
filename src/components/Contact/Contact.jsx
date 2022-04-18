@@ -11,7 +11,7 @@ const Contact = () => {
             <div className="row">
                 <div className="col-lg-6">
                     <div className="info-box mb-4">
-                        <i className="bx bx-map"></i>
+                        <i className="bi bi-map"></i>
                         <h3>Our Address</h3>
                         <p>111 Abc Street, Dfghjk, PP 123456</p>
                     </div>
@@ -19,7 +19,7 @@ const Contact = () => {
 
                 <div className="col-lg-3 col-md-6">
                     <div className="info-box  mb-4">
-                        <i className="bx bx-envelope"></i>
+                        <i className="bi bi-envelope"></i>
                         <h3>Email Us</h3>
                         <p>contact@example.com</p>
                     </div>
@@ -27,7 +27,7 @@ const Contact = () => {
 
                 <div className="col-lg-3 col-md-6">
                     <div className="info-box  mb-4">
-                        <i className="bx bx-phone-call"></i>
+                        <i className="bi bi-telephone-inbound"></i>
                         <h3>Call Us</h3>
                         <p>+1 2345 6789 23</p>
                     </div>

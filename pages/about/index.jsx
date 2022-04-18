@@ -30,7 +30,7 @@ const About = () => {
                         </p>
                         <ul>
                             <li>
-                                <i className="bx bx-store-alt"/>
+                                <i className="bi bi-tropical-storm"/>
                                 <div>
                                     <h5>Ullamco laboris nisi ut aliquip consequat</h5>
                                     <p>Magni facilis facilis repellendus cum excepturi quaerat praesentium libre
@@ -38,7 +38,7 @@ const About = () => {
                                 </div>
                             </li>
                             <li>
-                                <i className="bx bx-images"/>
+                                <i className="bi bi-images"/>
                                 <div>
                                     <h5>Magnam soluta odio exercitationem reprehenderi</h5>
                                     <p>Quo totam dolorum at pariatur aut distinctio dolorum laudantium illo direna
