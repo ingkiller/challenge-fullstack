@@ -1,5 +1,5 @@
-export const TOGGLE_TASK = `mutation toggleTask($taskId: Int!) {
-  toggleTask(taskId: $taskId) {
+export const TOGGLE_TASK = `mutation toggleTask($taskId: Int!,$userId: Int!) {
+  toggleTask(taskId: $taskId, userId: $userId) {
     id,
     userId,
     title,

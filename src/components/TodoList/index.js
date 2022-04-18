@@ -51,7 +51,7 @@ export default () => {
     },[tasks])
 
     const toggleTaskHandler = useCallback(async (taskId) => {
-        let result = await toggleTask({variables:{taskId: taskId,userId:id}})
+        let result = await toggleTask({variables:{taskId: taskId,userId:userData.id}})
         if(result.error){
             console.error(result.error)
         }else{
@@ -59,7 +59,7 @@ export default () => {
                 return [...current].map(t => t.id === result.data.toggleTask.id?result.data.toggleTask: t)
             })
         }
-    },[toggleTask])
+    },[toggleTask,userData])
 
     const onCreateNewTask = useCallback(async (evt) => {
         evt.preventDefault()
