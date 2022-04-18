@@ -6,7 +6,7 @@ const newConfig = {
     title:'New Title',
     description:'New Description'
 }
-export default () => {
+const About = () => {
     return <BaseTemplate>
         <NextSeo {...newConfig} />
         <section id="about" className="about section-bg">
@@ -59,3 +59,4 @@ export default () => {
         </section>
     </BaseTemplate>
 }
+export default About

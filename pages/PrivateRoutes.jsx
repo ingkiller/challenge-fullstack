@@ -1,10 +1,16 @@
 import {useRouter} from "next/router";
 import {useUserContext} from "../context/UserContext";
-import {useCallback} from "react";
+import {useCallback, useEffect, useState} from "react";
 const publicRoutes = ['/about','/contact']
 export const ProtectRoute = ({ children }) => {
     const router = useRouter()
-    const {userData} = useUserContext()
+    const {userData,loading} = useUserContext()
+    const [loadingData, setLoadingData] = useState(false)
+
+    useEffect(() => {
+        setLoadingData(loading)
+    },[loading])
+
 
     const isPublicRoute = useCallback(() =>{
         return publicRoutes.includes(router.pathname)
@@ -14,7 +20,11 @@ export const ProtectRoute = ({ children }) => {
         return userData !== null
     },[userData])
 
-    if(isPublicRoute() || isAuthenticated())
+    if(loadingData){
+        return null
+    }
+
+    if((isPublicRoute() || isAuthenticated()) && (typeof window !== "undefined" && window.location.pathname !== '/login'))
         return children
 
     if(typeof window !== "undefined" && window.location.pathname === '/login')

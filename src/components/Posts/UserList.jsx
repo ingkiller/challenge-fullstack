@@ -1,7 +1,7 @@
-import { useQuery, useManualQuery } from "graphql-hooks";
-import {USERS_QUERY, GET_POST_BY_USER_ID} from "../queries";
+import { useQuery } from "graphql-hooks";
+import {USERS_QUERY} from "../queries";
 import UserItem from "./UserItem";
-import {useCallback, useEffect, useState} from "react";
+import {useCallback} from "react";
 
 const UserList = ({onClickUser}) => {
     const {data=[],loading,error} = useQuery(USERS_QUERY);

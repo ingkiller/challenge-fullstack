@@ -11,7 +11,7 @@ import {useEffect} from 'react'
 import {  ClientContext } from 'graphql-hooks'
 import { useGraphQLClient } from '../lib/graphql-client'
 import {DefaultSeo} from 'next-seo';
-import DEFAULT_SEO from './seoConfig'
+import jsonConfig from './seoConfig'
 import {UserContextProvider} from "../context/UserContext";
 import {ProtectRoute} from './PrivateRoutes'
 
@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }) {
     }, []);
   return (
       <ClientContext.Provider value={graphQLClient}>
-          <DefaultSeo {...DEFAULT_SEO} />
+          <DefaultSeo {...jsonConfig} />
           <UserContextProvider>
               <ProtectRoute>
                   <Component {...pageProps} />

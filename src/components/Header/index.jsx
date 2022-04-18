@@ -1,7 +1,8 @@
 import ActiveLink from "../ActiveLink";
 import {useUserContext} from "../../../context/UserContext";
+import Link from 'next/link'
 
-export default () => {
+const Header = () => {
     const {token,onLogOut} = useUserContext()
 
    return ( <>
@@ -21,7 +22,7 @@ export default () => {
        </section>
        <header id="header" className="d-flex align-items-center">
            <div className="container d-flex align-items-center justify-content-between">
-               <h1 className="logo"><a href="/about">Challenger<span>.</span></a></h1>
+               <h1 className="logo"><Link href="/about"><a>Challenger<span>.</span></a></Link></h1>
                <nav id="navbar" className="navbar">
                    <ul>
                        <li><ActiveLink href="/about" >About</ActiveLink></li>
@@ -45,3 +46,5 @@ export default () => {
        </header>
    </>)
 }
+
+export default Header

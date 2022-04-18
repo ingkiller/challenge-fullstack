@@ -1,4 +1,4 @@
-export default {
+const jsonConfig = {
     title: 'My awesome Title',
     description: 'My Awesome description',
     twitter: {
@@ -7,3 +7,4 @@ export default {
         cardType: 'summary_large_image',
     },
 }
+export default jsonConfig

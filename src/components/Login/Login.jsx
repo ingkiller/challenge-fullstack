@@ -1,18 +1,18 @@
 import {useCallback, useEffect, useState} from "react";
 import { useRouter } from 'next/router'
 import {useUserContext} from "../../../context/UserContext";
+import Image from 'next/image'
 
-export default () => {
+const Login = () => {
     const router = useRouter()
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(true);
-    const [error, setLoginError] = useState(null)
-    const {token,onLoginHandler} = useUserContext();
+    const {token,onLoginHandler,error=null} = useUserContext();
 
     useEffect(() => {
         token !== "" && router.push('/posts')
-    },[token])
+    },[token,router])
 
     const onChangeUsername = useCallback(evt => {
         setUsername(evt.target.value);
@@ -27,15 +27,15 @@ export default () => {
     },[])
 
     const loginHandler = useCallback(async () => {
-        onLoginHandler(username,password,rememberMe)
-    },[username,password,rememberMe])
+        onLoginHandler && onLoginHandler(username,password,rememberMe)
+    },[username,password,rememberMe,onLoginHandler])
 
 
     return token === "" &&(<div className="container h-100">
             <div className="row d-flex align-items-center justify-content-center h-100">
                 <div className="col-md-8 col-lg-7 col-xl-6">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-                         className="img-fluid" alt="Phone image"/>
+                    <Image src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+                         className="img-fluid" alt=""/>
                 </div>
                 <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
                     <form>
@@ -92,3 +92,4 @@ export default () => {
         </div>)
 
 }
+export default Login

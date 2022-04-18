@@ -1,31 +1,29 @@
 import {useEffect, useState} from "react";
 import {useManualQuery} from "graphql-hooks";
 import Link from 'next/link'
-import {useUserContext} from "../../../context/UserContext";
 import {GET_ALBUMS_BY_USER_ID} from '../queries'
 import ServicesList from "../Services/ServicesList";
 
-const AlbumsList = (props) => {
-    const {token} = useUserContext();
+const AlbumsList = () => {
     const [loadingAlbums, setLoadingAlbums] = useState(true);
     const [error, setError]= useState(null);
     const [data, setData] = useState([]);
     const [fetchAlbumsByUserId] = useManualQuery(GET_ALBUMS_BY_USER_ID);
-
 
     useEffect( () => {
         const getAlbums = async () => {
             const result = await fetchAlbumsByUserId({variables:{userId:1}})
             if(result.error){
                 console.error(result.error)
+                setData([])
                 setError(result.error)
             }else{
                 setData(result.data.getAlbumsByUserId);
-                setLoadingAlbums(false)
             }
+            setLoadingAlbums(false)
         }
         getAlbums()
-    },[])
+    },[fetchAlbumsByUserId])
 
     return (<section id="pricing" className="pricing">
         <div className="container">
@@ -40,8 +38,8 @@ const AlbumsList = (props) => {
                                     <div className="col-1"><div className="spinner-border text-primary" role="status">
                                         <span className="visually-hidden">Loading...</span></div>
                                     </div>
-                                        <div className="col-7 text-start">
-                                            <h4>Loading Albums...</h4>
+                                        <div className="col-7 text-start section-title">
+                                            <h3><span>Loading Albums...</span></h3>
                                         </div>
                                 </div>
 
@@ -53,7 +51,7 @@ const AlbumsList = (props) => {
                                 !loadingAlbums && !error && <>
                                     <div className="container">
                                         <div className="section-title">
-                                            <h3>Albums List</h3>
+                                            <h3><span>Albums List</span></h3>
                                         </div>
                                     </div>
                                     <ul className="list-group list-group-flush">
@@ -82,7 +80,6 @@ const AlbumsList = (props) => {
             </div>
         </div>
     </section>
-
        )
 }
 

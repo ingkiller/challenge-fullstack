@@ -82,7 +82,7 @@ id,title,Url,thumbnailUrl
 }}`
 
 export const GET_USERDATA_BY_TOKEN = `query ($token: String!){
-getUserDataByUsername(token: $token){
+getUserDataByUsername(tokenStr: $token){
 id,name,username
 }
 }`

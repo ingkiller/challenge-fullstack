@@ -6,8 +6,10 @@ const AvatarContainer = styled.div`
   border-radius:50%;
   background-color:rgba(0,0,0,10%);
 `
-export default ({name,size=40}) =>(<AvatarContainer size={size}  className="d-flex justify-content-center align-items-center">
+const Avatar = ({name,size=40}) =>(<AvatarContainer size={size}  className="d-flex justify-content-center align-items-center">
     <div className="display-8 text-uppercase">
         {name}
     </div>
 </AvatarContainer>)
+
+export default Avatar

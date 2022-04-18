@@ -1,4 +1,4 @@
-export default ({email,body}) => (<div className="col-11 py-2">
+const Comment = ({email,body}) => (<div className="col-11 py-2">
     <div className="card" style={{boxShadow: '0px 0px 4px rgb(0 0 0 / 12%)'}}>
         <div className="card-body">
             <div className="row">
@@ -14,3 +14,5 @@ export default ({email,body}) => (<div className="col-11 py-2">
         </div>
     </div>
 </div>)
+
+export default Comment

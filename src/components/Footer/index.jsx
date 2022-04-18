@@ -1,5 +1,5 @@
 import servicesJson from "../commun/services.json"
-export default ({displayNewsletter = true}) => (<footer id="footer">
+const Footer = ({displayNewsletter = true}) => (<footer id="footer">
     {
         displayNewsletter &&  <div className="footer-newsletter">
             <div className="container">
@@ -68,3 +68,5 @@ export default ({displayNewsletter = true}) => (<footer id="footer">
         </div>
     </div>
 </footer>)
+
+export default Footer

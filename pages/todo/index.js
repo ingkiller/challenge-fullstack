@@ -1,6 +1,7 @@
 import BaseTemplate from '../../src/components/baseTemplate'
 import TodoList from '../../src/components/TodoList'
 
-export default () => (<BaseTemplate>
+const PageTodoList = () => (<BaseTemplate>
                         <TodoList/>
 </BaseTemplate>)
+export default PageTodoList

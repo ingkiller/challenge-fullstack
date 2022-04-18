@@ -5,9 +5,9 @@ import { GET_POST_BY_USER_ID } from "../queries";
 import {useCallback, useEffect, useRef, useState} from "react";
 import UserList from "./UserList";
 import ServicesList from "../Services/ServicesList";
-const STEP = 3;
+const STEP = 5;
 
-export default () => {
+const Posts = () => {
 
     const start = useRef(0)
     const [data,setData] = useState([])
@@ -29,20 +29,17 @@ export default () => {
             })
             start.current += STEP
         }
-    },[userId,start])
+    },[userId,start,fetchPostsByUserId])
 
     useEffect(() => {
         postsByUserId()
-    },[userId])
-
-
+    },[userId,postsByUserId])
 
    const onClickUser = useCallback( async (userId) => {
        start.current = 0
        setUserId(userId)
        setData([])
    },[])
-
 
     return ( <section id="pricing" className="pricing">
         <div className="container">
@@ -73,3 +70,5 @@ export default () => {
     </section>)
 
 }
+
+export default Posts

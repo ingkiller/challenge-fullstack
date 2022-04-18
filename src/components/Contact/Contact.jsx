@@ -1,4 +1,4 @@
-export default () => {
+const Contact = () => {
     return <section id="contact" className="contact">
         <div className="container">
 
@@ -79,3 +79,4 @@ export default () => {
         </div>
     </section>
 }
+export default Contact

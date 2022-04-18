@@ -23,7 +23,7 @@ const InputComment = styled.input`
 `
 
 
-export default ({id,title,body,numberOfComment,user:{username,email},createdDate,numberOfLikes=10}) => {
+const Posts = ({id,title,body,numberOfComment,user:{username,email},createdDate,numberOfLikes=10}) => {
 
     const [getCommentByPostId] = useManualQuery(GET_COMMENTS_BY_POST_ID)
     const [comments, setComments] = useState([])
@@ -33,20 +33,19 @@ export default ({id,title,body,numberOfComment,user:{username,email},createdDate
     const [liked,setLiked] = useState(0);
     const [totalLikes, setTotalLikes] = useState(numberOfLikes)
 
-    const getCommentsByPostIdHandler =async (postId) =>{
+    const getCommentsByPostIdHandler = useCallback(async (postId) =>{
         setIsLoadingComments(true)
         let result = await getCommentByPostId({
             variables: { postId:postId},
             useCache:false
         })
-        if(result.data && result.data.getCommentByPostId){
+        if(result.error){
+            setComments([])
+        }else{
             setComments(result.data.getCommentByPostId)
         }
-        if(result.error){
-            //Todo: manage errors
-        }
         setIsLoadingComments(false)
-    }
+    },[getCommentByPostId])
 
     const toggleComments = useCallback((evt,postId) => {
         evt.preventDefault()
@@ -184,36 +183,4 @@ export default ({id,title,body,numberOfComment,user:{username,email},createdDate
         </div>
     </div>
 }
-
-/*
- <div className="row py-1">
-                    <div className="col-6 d-flex justify-content-start">
-                        <div className="px-2">
-                            <button className="btn btn-sm" type="button">
-                                <i className="bi-chat" style={{color:'#637182'}}>{numberOfComment} comments </i>
-                            </button>
-                        </div>
-                    </div>
-                    <div className="col-6 d-flex justify-content-end">
-                        <div className="px-2">
-                            <button color="" className="btn btn-sm" type="button" onClick={e => toggleComments(e,id)}>
-                               <span style={{color:'#637182'}}>{displayComments ? "close comments": "view comments"}</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div className="row justify-content-center">
-                    {
-                        isLoadingComments && <div>
-                            <div className="spinner-border text-primary" role="status">
-                                <span className="visually-hidden">Loading...</span>
-                            </div>
-                        </div>
-                    }
-                    {
-                        displayComments && comments.map(({email,body},key) =>(
-                           <Comment key={key} email={email} body={body} />
-                           ))
-                    }
-                </div>
- */
+export default Posts

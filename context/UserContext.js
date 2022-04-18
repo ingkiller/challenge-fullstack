@@ -13,13 +13,25 @@ const UserContextProvider = (props) => {
     const [userData, setUserData] = useState(null)
     const [onLogin] = useMutation(LOGIN);
     const [fetchUserDataByToken] = useManualQuery(GET_USERDATA_BY_TOKEN)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
+        setLoading(true)
         const temp = typeof window !== "undefined" ? localStorage.getItem('token'): "";
         if(temp){
             const getData = async () => {
-                //todo call Api
+                let result = await fetchUserDataByToken({variables:{token:temp},useCache:false})
+                if(result.error){
+                    console.log('Error:',result.error)
+                    setUserData(null)
+                }else{
+                    setUserData(result.data.getUserDataByUsername)
+                }
+                setLoading(false)
             }
+             getData()
+        }else{
+            setLoading(false)
         }
     },[])
 
@@ -32,7 +44,6 @@ const UserContextProvider = (props) => {
             rememberMe && typeof window !== "undefined" && localStorage.setItem('token',null)
             console.error('Login Error '+result.error)
         }else{
-            console.log('okoko')
             setToken(result.data.login.token)
             setUserData(result.data.login.user)
             client.setHeader('Authorization', `Bearer ${result.data.login.token}`)
@@ -45,9 +56,10 @@ const UserContextProvider = (props) => {
         client.removeHeader('Authorization')
         typeof window !== "undefined" && localStorage.setItem('token',"")
         window.location.pathname = '/login'
+        setLoading(false)
     },[])
 
-    return <UserContext.Provider value={{token:token,userData:userData
+    return <UserContext.Provider value={{token:token,userData:userData,loading
         ,onLoginHandler,onLogOut}} {...props}/>
 }
 

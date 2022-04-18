@@ -9,7 +9,7 @@ const UserItem = ({id,name,email,onClickItem}) => {
     const onClickHandler = useCallback(evt => {
         evt.preventDefault()
         onClickItem && onClickItem(id)
-    },[onClickItem])
+    },[onClickItem,id])
 
     return (<UserItemStyled className="row pb-3" onClick={onClickHandler}>
             <div className="col-2"><Avatar/></div>

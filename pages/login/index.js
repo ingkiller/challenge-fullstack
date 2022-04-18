@@ -1,6 +1,6 @@
 import BaseTemplate from '../../src/components/baseTemplate'
 import Login from "../../src/components/Login/Login";
-export default () => {
+const PageLogin = () => {
     return <BaseTemplate displayNewsletter={false}>
         <section id="pricing" className="pricing">
             <div className="container">
@@ -15,3 +15,4 @@ export default () => {
         </section>
     </BaseTemplate>
 }
+export default PageLogin
