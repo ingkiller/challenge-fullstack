@@ -7,6 +7,7 @@ export default () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(true);
+    const [error, setLoginError] = useState(null)
     const {token,onLoginHandler} = useUserContext();
 
     useEffect(() => {
@@ -38,6 +39,11 @@ export default () => {
                 </div>
                 <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
                     <form>
+                        {
+                           error &&  <div className="alert alert-primary" role="alert">
+                               A simple primary alert—check it out!
+                           </div>
+                        }
 
                         <div className="form-outline mb-4">
                             <input type="email" id="form1Example13" className="form-control form-control-md" placeholder="Email address" onChange={onChangeUsername}/>
@@ -67,18 +73,16 @@ export default () => {
 
                         <div className="d-flex flex-row align-items-center justify-content-center ">
                             <button type="button" className="btn btn-link btn-floating">
-                                <i className="bi-google" role="img" aria-label="Google" style={{color:'var(--bs-primary)'}}></i>
+                                <i className="bi-google" role="img" aria-label="Google" style={{color:'var(--bs-primary)'}}/>
                             </button>
                             <button type="button" className="btn btn-link btn-floating">
-                                <i className="bi-github" role="img" aria-label="GitHub" style={{color:'var(--bs-primary)'}}></i>
+                                <i className="bi-github" role="img" aria-label="GitHub" style={{color:'var(--bs-primary)'}}/>
                             </button>
-
                             <button type="button" className="btn btn-link btn-floating">
-                                <i className="bi-facebook" role="img" aria-label="Facebook" style={{color:'var(--bs-primary)'}}></i>
+                                <i className="bi-facebook" role="img" aria-label="Facebook" style={{color:'var(--bs-primary)'}}/>
                             </button>
-
                             <button type="button" className="btn btn-link btn-floating">
-                                <i className="bi-twitter" role="img" aria-label="Twitter" style={{color:'var(--bs-primary)'}}></i>
+                                <i className="bi-twitter" role="img" aria-label="Twitter" style={{color:'var(--bs-primary)'}}/>
                             </button>
                         </div>
 

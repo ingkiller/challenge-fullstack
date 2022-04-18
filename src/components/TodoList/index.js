@@ -4,6 +4,7 @@ import Task from "./Task";
 import { GET_TODOLIST_BY_USER_ID } from "../queries";
 import {TOGGLE_TASK, CREATE_TASK, DELETE_TASK} from "../mutations"
 import ServicesList from "../Services/ServicesList";
+import {useUserContext} from "../../../context/UserContext";
 
 export default () => {
     const [tab,setTab] = useState('tab-1');
@@ -14,7 +15,8 @@ export default () => {
     const [toggleTask] = useMutation(TOGGLE_TASK);
     const [createTask] = useMutation(CREATE_TASK);
     const [deleteTask] = useMutation(DELETE_TASK);
-
+    const {userData} = useUserContext()
+    console.log('userData:',userData)
 
     useEffect(() => {
         setLoadingTasks(true)
@@ -30,8 +32,9 @@ export default () => {
             }
             setLoadingTasks(false)
         }
-        getTodoListByUserId(2)
-    },[])
+        if(userData && userData.id)
+        getTodoListByUserId(userData.id)
+    },[userData])
 
     const onTabClick = useCallback(tab =>{
         tab.preventDefault()
@@ -48,7 +51,7 @@ export default () => {
     },[tasks])
 
     const toggleTaskHandler = useCallback(async (taskId) => {
-        let result = await toggleTask({variables:{taskId: taskId}})
+        let result = await toggleTask({variables:{taskId: taskId,userId:id}})
         if(result.error){
             console.error(result.error)
         }else{
@@ -74,7 +77,7 @@ export default () => {
     },[title,createTask])
 
     const onDeleteTaskById = useCallback(async (taskId) => {
-        let result = await deleteTask({variables:{taskId:taskId}})
+        let result = await deleteTask({variables:{taskId:taskId,userId:id}})
         if(result.error){
             console.error(result.error)
         }else {

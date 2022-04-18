@@ -8,11 +8,12 @@ import "./assets/vendor/swiper/swiper-bundle.min.css"
 import "./assets/vendor/bootstrap-icons/bootstrap-icons.css"
 import "./assets/css/style.css"
 import {useEffect} from 'react'
-import { GraphQLClient, ClientContext } from 'graphql-hooks'
+import {  ClientContext } from 'graphql-hooks'
 import { useGraphQLClient } from '../lib/graphql-client'
 import {DefaultSeo} from 'next-seo';
 import DEFAULT_SEO from './seoConfig'
 import {UserContextProvider} from "../context/UserContext";
+import {ProtectRoute} from './PrivateRoutes'
 
 
 function MyApp({ Component, pageProps }) {
@@ -25,7 +26,10 @@ function MyApp({ Component, pageProps }) {
       <ClientContext.Provider value={graphQLClient}>
           <DefaultSeo {...DEFAULT_SEO} />
           <UserContextProvider>
-              <Component {...pageProps} />
+              <ProtectRoute>
+                  <Component {...pageProps} />
+              </ProtectRoute>
+
           </UserContextProvider>
 
       </ClientContext.Provider>

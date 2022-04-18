@@ -9,20 +9,23 @@ const UserContextProvider = (props) => {
     const [token,setToken] = useState(() => {
          return  typeof window !== "undefined" ? localStorage.getItem('token'): "";
     })
+    const [userData, setUserData] = useState(null)
     const [onLogin] = useMutation(LOGIN);
 
     const onLoginHandler = useCallback(async (user,pass,rememberMe) =>{
         const result = await onLogin({variables:{username:user, password:pass}})
         if(result.error){
             setToken("")
+            setUserData(null)
             client.removeHeader('Authorization')
             rememberMe && typeof window !== "undefined" && localStorage.setItem('token',null)
             console.error('Login Error '+result.error)
         }else{
             console.log('okoko')
-            setToken(result.data.login)
-            client.setHeader('Authorization', `Bearer ${result.data.login}`)
-            rememberMe && typeof window !== "undefined" && localStorage.setItem('token',result.data.login)
+            setToken(result.data.login.token)
+            setUserData(result.data.login.user)
+            client.setHeader('Authorization', `Bearer ${result.data.login.token}`)
+            rememberMe && typeof window !== "undefined" && localStorage.setItem('token',result.data.login.token)
         }
     },[])
 
@@ -30,9 +33,11 @@ const UserContextProvider = (props) => {
         setToken("")
         client.removeHeader('Authorization')
         typeof window !== "undefined" && localStorage.setItem('token',"")
+        window.location.pathname = '/login'
     },[])
 
-    return <UserContext.Provider value={{token:token,userData:'',onLoginHandler,onLogOut}} {...props}/>
+    return <UserContext.Provider value={{token:token,userData:userData
+        ,onLoginHandler,onLogOut}} {...props}/>
 }
 
 const useUserContext = () => {

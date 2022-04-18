@@ -21,17 +21,22 @@ export default () => {
        </section>
        <header id="header" className="d-flex align-items-center">
            <div className="container d-flex align-items-center justify-content-between">
-               <h1 className="logo"><a href="/posts">Challenger<span>.</span></a></h1>
+               <h1 className="logo"><a href="/about">Challenger<span>.</span></a></h1>
                <nav id="navbar" className="navbar">
                    <ul>
-                       <li><ActiveLink href="/posts" >Posts</ActiveLink></li>
-                       <li><ActiveLink href="/albums" >Albums</ActiveLink></li>
-                       <li><ActiveLink href="/todo" >Todo</ActiveLink></li>
                        <li><ActiveLink href="/about" >About</ActiveLink></li>
-                       <li><ActiveLink href="/contact" >Contact</ActiveLink></li>{
-                       token === ""?<li><ActiveLink href="/login" >Login</ActiveLink></li>:
-                           <li><button className="btn btn-sm m-0 p-0" onClick={onLogOut}><ActiveLink href="#" >Logout</ActiveLink></button></li>
-                   }
+                       <li><ActiveLink href="/contact" >Contact</ActiveLink></li>
+                       {
+                           token !== "" &&<>
+                               <li><ActiveLink href="/posts" >Posts</ActiveLink></li>
+                               <li><ActiveLink href="/albums" >Albums</ActiveLink></li>
+                               <li><ActiveLink href="/todo" >Todo</ActiveLink></li>
+                               <li><button className="btn btn-sm m-0 p-0" onClick={onLogOut}><ActiveLink href="#" >Logout</ActiveLink></button></li>
+                           </>
+                       }
+                       {
+                         token === "" && <li><ActiveLink href="/login" >Login</ActiveLink></li>
+                        }
 
                    </ul>
                    <i className="bi bi-list mobile-nav-toggle"/>
